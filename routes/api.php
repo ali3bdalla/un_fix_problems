@@ -1,7 +1,5 @@
 <?php
 	
-	use Illuminate\Http\Request;
-	
 	/*
 	|--------------------------------------------------------------------------
 	| API Routes
@@ -12,7 +10,10 @@
 	| is assigned the "api" middleware group. Enjoy building your API!
 	|
 	*/
-	
+//
+//	Route::post('order',function (){
+//		return 1;
+//	});
 	Route::resource('user',"UserController");
 	Route::resource('order',"OrderController");
 	Route::resource('menu',"MenuController");

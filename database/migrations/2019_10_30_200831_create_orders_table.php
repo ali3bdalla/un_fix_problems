@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->enum('status',['pending','complete'])->default('pending');
             $table->enum('priority',['high','medium','low'])->default('low');
             $table->string('attachment')->nullable();
+            $table->string('note')->nullable();
             $table->float('lat')->nullable();
             $table->float('long')->nullable();
             $table->timestamps();

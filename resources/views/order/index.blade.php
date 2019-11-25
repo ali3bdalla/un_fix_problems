@@ -8,42 +8,27 @@
                     <div class="card-header">users</div>
 
                     <div class="card-body">
-                        @foreach($users as $user)
+                        @foreach($orders as $order)
                             <div class="card-header">
-                                <div><span class="badge badge-primary">{{$user->id}}</span>
-                                     @if($user->user_role=='user') <span class="badge badge-success">user</span> @else
-                                        <span class="badge badge-danger">admin</span> @endif</div>
+
+                                <a href="/order/{{ $order->id }}">
+                                <div><span class="badge badge-primary">{{$order->id}}</span>
+                                    @if($order->status=='complete') <span class="badge badge-success">complete</span> @else
+                                        <span class="badge badge-danger">pending</span> @endif</div>
 
                                 <div class="row">
-                                    <div class="col">{{ $user->name }} -
-                                        {{ $user->email }}</div>
-{{--                                    <div class="col">--}}
-{{--                                        @if($user->user_role=='user')--}}
-{{--                                           <a class="btn btn-primary btn-sm" href="{{route('admin.user.edit',$user->id)--}}
-{{--                                           }}">--}}
-{{--                                               edit--}}
-{{--                                           </a>--}}
+                                    <div class="col">{{ $order->note }} </div>
 
-
-{{--                                            <a class="btn btn-dark btn-sm" href="{{route('admin.user.edit',$user->id)--}}
-{{--                                           }}">--}}
-{{--                                                orders--}}
-{{--                                            </a>--}}
-{{--                                        @endif--}}
-{{--                                    </div>--}}
-                                    <div class="col text-right">{{ $user->created_at }}</div>
+                                    <div class="col text-right">{{ $order->created_at }}</div>
                                 </div>
 
-
-
+                                </a>
 
                             </div>
                         @endforeach
                     </div>
 
-                    <div class="card-footer text-center">
-                        {{ $users->links() }}
-                    </div>
+
                 </div>
             </div>
         </div>
