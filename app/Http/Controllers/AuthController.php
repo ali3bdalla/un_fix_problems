@@ -3,8 +3,8 @@
 	namespace App\Http\Controllers;
 	
 	use App\User;
-	use Illuminate\Support\Facades\Auth;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Auth;
 	
 	class AuthController extends Controller
 	{
@@ -14,7 +14,7 @@
 			$request->validate([
 				'email' => 'required|string|unique:users,email',
 				'name' => 'required|string',
-				'password' => 'required|string|confirmed',
+				'password' => 'required|string',
 			]);
 			
 			$user = new User();
