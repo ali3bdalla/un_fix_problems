@@ -12,15 +12,22 @@
                             <div class="card-header">
 
                                 <a href="/order/{{ $order->id }}">
-                                <div><span class="badge badge-primary">{{$order->id}}</span>
-                                    @if($order->status=='complete') <span class="badge badge-success">complete</span> @else
-                                        <span class="badge badge-danger">pending</span> @endif</div>
+                                    <div><span class="badge badge-primary">{{$order->id}}</span>
+                                        @if($order->priority=='low')
+                                            <span class="badge badge-info">low</span>
 
-                                <div class="row">
-                                    <div class="col">{{ $order->note }} </div>
+                                        @elseif($order->priority=='medium')
+                                            <span class="badge badge-warning">medium</span>
+                                        @else
+                                            <span class="badge badge-danger">high</span>
 
-                                    <div class="col text-right">{{ $order->created_at }}</div>
-                                </div>
+                                        @endif</div>
+
+                                    <div class="row">
+                                        <div class="col">{{ $order->note }} </div>
+
+                                        <div class="col text-right">{{ $order->created_at }}</div>
+                                    </div>
 
                                 </a>
 

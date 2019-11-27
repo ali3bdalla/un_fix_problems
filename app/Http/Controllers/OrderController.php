@@ -55,18 +55,15 @@
 			//
 		}
 		
-		
-		
-		public function edit(Order $order)
+		public function edit(Order $order,Request $request)
 		{
 			
 			$order->update([
-				'status' => 'complete'
+				'priority' => $request->priority
 			]);
 			return back();
 			//
 		}
-		
 		
 		/**
 		 * Update the specified resource in storage.

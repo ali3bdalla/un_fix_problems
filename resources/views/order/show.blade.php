@@ -31,9 +31,22 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $order->status }}</h5>
                                 <p class="card-text">{{ $order->note }}</p>
-                                @if($order->status=='pending')
-                                    <a href="{{ route('order.edit',$order->id) }}" class="btn btn-primary">Job Done</a>
-                                @endif
+                                <form action="{{ route('order.edit',$order->id) }}" method="get">
+                                    <div class="form-group">
+                                        <select class="form-control" name="priority">
+                                            <option value="low" @if($order->priority=="low") selected
+                                                    @endif>low</option>
+                                            <option value="medium"  @if($order->priority=="medium") selected
+                                                    @endif>medium</option>
+                                            <option value="high"  @if($order->priority=="high") selected
+                                                    @endif>high</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">update</button>
+                                    </div>
+
+                                </form>
                             </div>
 
                             <div class="card-footer">
@@ -59,9 +72,10 @@
 
         var lat = parseFloat('{{ $order->lat }}');
         var long = parseFloat('{{ $order->long }}');
+
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat:lat, lng: long},
+                center: {lat: lat, lng: long},
                 zoom: 8
             });
         }
