@@ -10,6 +10,7 @@
 	
 	class LoginController extends Controller
 	{
+		
 		/*
 		|--------------------------------------------------------------------------
 		| Login Controller
@@ -57,9 +58,11 @@
 				
 				return $this->authenticated($request,$this->guard()->user())
 					?: redirect()->intended($this->redirectPath());
-			}else{
-				return auth('web')->user();
 			}
+			
+			
+			return Auth::guard("web")->user();
+			
 			
 		}
 		
@@ -88,11 +91,14 @@
 				return $this->guard()->attempt(
 					$credentials,$request->filled('remember')
 				);
-			}else{
-				return $this->guard()->attempt(
-					$credentials,$request->filled('remember')
-				);
 			}
+
+//			print_r($credentials);
+//			return $credentials;
+//				return  $this->guard()
+			return Auth::guard('web')->attempt(
+				$credentials,$request->filled('remember')
+			);
 			
 			
 		}

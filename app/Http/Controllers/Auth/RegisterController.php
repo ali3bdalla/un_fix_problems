@@ -56,16 +56,17 @@
 				return $this->registered($request,$user)
 					?: redirect($this->redirectPath());
 			}
-			
-			
+
+
 //			$this->validator($request->all())->validate();
+
+			event(new Registered($user = $this->create($request->all())));
 			
-//			event(new Registered($user = $this->create($request->all())));
+			$this->guard()->login($user);
 			
-//			 $this->guard()->login($user);
-//
-//			return $this->registered($request,$user)
-//				?: redirect($this->redirectPath());
+			return $user;
+			return $this->registered($request,$user)
+				?: redirect($this->redirectPath());
 			
 		}
 		
