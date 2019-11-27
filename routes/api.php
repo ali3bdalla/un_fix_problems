@@ -17,7 +17,9 @@
 	Route::resource('user',"UserController");
 	Route::resource('order',"OrderController");
 	Route::resource('menu',"MenuController");
-	Auth::routes();
+	Route::post("login","AuthController@login");
+	Route::post("register","AuthController@register");
+//	Auth::routes();
 	
 	Route::prefix('order')->group(function (){
 		Route::get("{user}/index","OrderController@index");
